@@ -11,9 +11,17 @@ import 'animate.css/animate.min.css';
 PNotify.defaults.styling = 'material';
 PNotify.defaults.icons = 'material';
 
+export function pnotifyAlert() {
+  PNotify.alert({
+    text: 'Too many matches found. Please enter a more specific query!',
+  });
+
+  // refs.infoAlert.classList.add('animate__animated', 'animate__wobble');
+}
+
 export function pnotifyError() {
   PNotify.error({
-    text: 'Too many matches found. Please enter a more specific query!',
+    text: 'Error',
   });
 
   // refs.infoAlert.classList.add('animate__animated', 'animate__wobble');

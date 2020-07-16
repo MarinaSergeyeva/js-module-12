@@ -1,42 +1,30 @@
 import debounce from 'lodash.debounce';
+import { pnotifyError, pnotifyAlert } from './pnotify';
 import refs from '../js/refs';
-import { pnotifyError } from './pnotify';
-// import countriesTpl from './templates/countries.hbs';
+import { countriesListMarkup, countryMarkup, clearMarkup } from './markup';
 
 const baseURL = 'https://restcountries.eu/rest/v2/name/';
-let search = '';
+const search = '';
 
 refs.searchQuery.addEventListener('input', debounce(fetchCountries, 500));
-console.dir(refs.searchQuery);
 
-export function fetchCountries(searchQuery) {
+export function fetchCountries(search) {
   search = refs.searchQuery.value;
+  // console.dir(refs.searchQuery);
 
   if (search) {
-    let url = `${baseURL}${search}`;
+    const url = `${baseURL}${search}`;
 
     fetch(url)
       .then(res => res.json())
       .then(data => {
-        if (data.length > 10) {
-          pnotifyError();
-        }
-        if (data.length > 1 && data.length <= 10) {
-          const list = data.map(element => element.name);
-          console.log(list);
-        }
-        if (data.length === 1) {
-          // console.log(data);
-          const country = data[0];
-          const newCountry = {
-            name: country.name,
-            languages: country.languages,
-          };
-          console.log(newCountry);
-        }
-      });
+        data.length > 10 && pnotifyAlert();
+
+        data.length > 1 && data.length <= 10 && countriesListMarkup(data);
+
+        data.length === 1 && countryMarkup(data);
+      })
+      .catch(err => console.log(err.status))
+      .finally(clearMarkup());
   }
 }
-
-const url = `${baseURL}${search}`;
-console.log(url);

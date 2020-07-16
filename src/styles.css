@@ -19,6 +19,7 @@ body {
   /* background-image: url('./images/bg-pattern.png'); */
 }
 
+/* =========================== INPUT ============================= */
 .search-input {
   display: block;
   margin: 0 auto;
@@ -30,6 +31,7 @@ body {
   padding: 5px;
 }
 
+/* =========================== CONTENT ============================= */
 .content h2 {
   text-align: center;
   position: relative;

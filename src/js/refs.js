@@ -1,5 +1,7 @@
 const refs = {
-  searchCountry: document.querySelector('.search-input'),
+  searchQuery: document.querySelector('.search-input'),
+  // infoAlert: document.querySelector('.pnotify-material'),
+  infoAlert: document.querySelector('.pnotify-material'),
 };
 
 export default refs;

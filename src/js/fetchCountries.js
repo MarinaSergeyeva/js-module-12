@@ -25,6 +25,5 @@ export function fetchCountries(search) {
         data.length === 1 && countryMarkup(data);
       })
       .catch(err => console.log(err.status));
-    .finally(clearMarkup());
   }
 }

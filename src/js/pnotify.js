@@ -12,6 +12,8 @@ PNotify.defaults.styling = 'material';
 PNotify.defaults.icons = 'material';
 
 export function pnotifyAlert() {
+  refs.content.innerHTML = '';
+
   PNotify.alert({
     text: 'Too many matches found. Please enter a more specific query!',
   });

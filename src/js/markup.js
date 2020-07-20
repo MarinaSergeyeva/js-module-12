@@ -14,9 +14,9 @@ export function countryMarkup(data) {
   clearInput();
 }
 
-function clearInput() {
-  refs.searchQuery.value = '';
-}
+// function clearInput() {
+//   refs.searchQuery.value = '';
+// }
 
 export function clearMarkup() {
   refs.content.innerHTML = '';
